@@ -1,0 +1,320 @@
+<html>
+<head>
+<script type="text/javascript">
+
+//function to calculate price
+function calculatePrice()
+    {
+        
+        
+    var topping=0;
+        
+        //add price of topping when checked
+        if(document.getElementById("pepperoni").checked==true){
+            topping=topping+1;
+            }
+    
+        if(document.getElementById("onion").checked==true){
+            topping=topping+1;
+            }
+    
+        if(document.getElementById("sausage").checked==true){
+            topping=topping+1;
+        }
+    
+        if(document.getElementById("mushrooms").checked==true){
+            topping=topping+1;
+        }
+    
+        if(document.getElementById("peppers").checked==true){
+        topping=topping+1;
+        }
+    
+        if(document.getElementById("olives").checked==true){
+        topping=topping+1;
+        }
+    
+        if(document.getElementById("garlic").checked==true){
+        topping=topping+1;
+        }
+  
+    //check for size to get the value
+    var size_is="";
+        if(document.getElementById("small").checked==true)
+            size_is=(document.getElementById("small").value);
+        if(document.getElementById("medium").checked==true)
+            size_is=(document.getElementById("medium").value);
+        if(document.getElementById("large").checked==true)
+            size_is=(document.getElementById("large").value);
+   //check for crust to get the value
+    var crust_is="";
+        if(document.getElementById("thin").checked==true)
+            crust_is=(document.getElementById("thin").value);
+        if(document.getElementById("regular").checked==true)
+            crust_is=(document.getElementById("regular").value);
+        if(document.getElementById("deep-dish").checked==true)
+            crust_is=(document.getElementById("deep-dish").value);
+   //check for sauce to get the value - no charge for sauce here 
+    var sauce_is="";
+        if(document.getElementById("red").checked==true)
+            sauce_is=(document.getElementById("red").value);
+        if(document.getElementById("white").checked==true)
+            sauce_is=(document.getElementById("white").value);
+        if(document.getElementById("green").checked==true)
+            sauce_is=(document.getElementById("green").value);
+
+  // if the size is more than 3 or size or crust not entered
+    if(topping>3 || size_is=="" || crust_is=="")
+        {
+            if(size_is=="")
+                document.getElementById("result").innerHTML="Please you need to select a valid size";
+            else if(crust_is=="")
+                document.getElementById("result").innerHTML="Please you need to select a valid crust";
+            else
+                document.getElementById("result").innerHTML="Please don't select more than 3 toppings";
+                document.getElementById("amounts").value=0;
+        }
+        else
+        {
+            //print to user what they order to confirm they have the right order
+            var order="The Size you choose is:"+size_is+" and the Crust is:"+crust_is+" With this Toppings that you have selected: ";
+                if(document.getElementById("pepperoni").checked==true)
+                    order=order+" +pepperoni";
+  
+            if(document.getElementById("onion").checked==true)
+                order=order+" +onion";
+  
+            if(document.getElementById("sausage").checked==true)
+                order=order+" +sausage";
+  
+            if(document.getElementById("mushrooms").checked==true)
+                order=order+" +mushrooms";
+  
+            if(document.getElementById("peppers").checked==true)
+                order=order+" +peppers";
+  
+            if(document.getElementById("olives").checked==true)
+                order=order+" +olives";
+  
+            if(document.getElementById("garlic").checked==true)
+                order=order+" +garlic";
+  
+                    order=order+".";
+        //intialize price
+        var price=0;
+            //set up the prices for small pizza with type of crust
+            if(size_is=="small"){
+            if(crust_is=="thin")
+                price=10;
+            if(crust_is=="regular")
+                price=12;
+            if(crust_is=="deep-dish")
+                price=15;
+        
+            //make toppings add up by +1 for small size pizza
+            if(topping==0)
+                price=price+0;
+  
+            if(topping==1)
+                price=price+1;
+  
+            if(topping==2)
+                price=price+2;
+  
+            if(topping==3)
+                price=price+3;
+            }
+
+            //for medium size
+            if(size_is=="medium"){
+            if(crust_is=="thin")
+                price=15;
+            if(crust_is=="regular")
+                price=17;
+            if(crust_is=="deep-dish")
+                price=20;
+  
+            if(topping==0)
+                price=price+0;
+                
+            //inrement by +2 for topping for each add for medium size pizza 
+            if(topping==1)
+                price=price+2;
+  
+            if(topping==2)
+                price=price+4;
+                
+            if(topping==3)
+                price=price+6;
+            }
+            
+            //for Large
+            if(size_is=="large"){
+            if(crust_is=="thin")
+                 price=20;
+                
+            if(crust_is=="regular")
+                price=22;
+                
+            if(crust_is=="deep-dish")
+                price=25;
+        
+            if(topping==0)
+                price=price+0;
+            
+            //make topping increment by +3 each time we add a topping
+            if(topping==1)
+                price=price+3;
+  
+            if(topping==2)
+                price=price+6;
+  
+            if(topping==3)
+                price=price+9;
+            }
+alert("Net Price: $"+price);
+document.getElementById("result").innerHTML=order;
+document.getElementById("amounts").value="$ "+price;
+  
+        }
+  }
+    
+    
+    //styling
+</script>
+<style>
+    
+   .button{
+    text-align:center;
+    margin-top:2%; 
+    
+     
+    }
+    
+    body{
+         background-color:burlywood;
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+        background-position: center;
+            }
+    
+    
+    .order{
+       text-align:center; 
+    }  
+    
+    
+calculatePrice{
+    background-color:lightgreen;
+    font-size:100%;
+    border-radius:5%;
+    border: 5px solid black;
+    color: green;
+}
+    
+ .buttons{
+    text-align:center;
+    margin-top:2%; 
+    
+     
+    }  
+ 
+   h1{
+        color: orangered;
+        font-size 500;
+        text-align:center;
+            } 
+    h2{
+        color: orangered;
+        font-size 500;
+        text-align:center;
+        text-decoration: underline;
+            } 
+    
+    .ImageBackground{
+                background-position: right;
+                padding: 20px;
+                padding-right: 10px;
+                align-content: center;
+    }
+
+</style>
+</head>
+  
+<body>
+    
+<div class = "ImageBackground">
+                <img src="C:\Users\iko_j\OneDrive\Bureau\CSS481-Winter2021\Assignments\Assignment3/500_F_292082032_oxXr6P0OARzxfrjHM5R8QJ4BchsBfxFK.jpg"  height="200"  width = 100% class = "center">
+<div id=main>
+<h1>Stager's Delecious Gourmet Pizza</h1><hr>
+<div id="buttons" class ="buttons">
+<h2>Pizza Size:</h2>
+<input type="radio" id="small" name="size" value="small">
+<label for="small"><font size="5">Small</font></label>
+<input type="radio" id="medium" name="size" value="medium">
+<label for="medium"><font size="5">Medium</font></label>
+<input type="radio" id="large" name="size" value="large">
+<label for="large"><font size="5">Large</font></label>
+</div>
+<br>
+<div id="buttons" class = "buttons">
+<h2>Crust Type:</h2>
+<input type="radio" id="thin" name="crust" value="thin">
+<label for="thin"><font size="5">Thin</font></label>
+<input type="radio" id="regular" name="crust" value="regular">
+<label for="regular"><font size="5">Regular</font></label>
+<input type="radio" id="deep-dish" name="crust" value="deep-dish">
+<label for="deep-dish"><font size="5">Deep-Dish</font></label>
+</div>
+<br>
+<div id="buttons" class = "buttons">
+<h2>Sauce(no additional charge):</h2>
+<input type="radio" id="red" name="sauce" value="red">
+<label for="red"><font size="5">Red</font></label>
+<input type="radio" id="white" name="sauce" value="white">
+<label for="white"><font size="5">White</font></label>
+<input type="radio" id="green" name="sauce" value="green">
+<label for="green"><font size="5">Green</font></label>
+</div>
+<br>
+    
+<div id="buttons" class = "buttons">
+<h2>Cheese</h2>
+<input type="radio" id="Thin" name="cheese" value="0.00" >
+<label for="Thin"><font size="5">Mozzarella</font></label>
+</div>
+<br>
+  
+<h2>Toppings(no more than 3):</h2>
+<div class = "buttons">
+<input type="checkbox" id="pepperoni" name="pepperoni" value="pepperoni">
+<label for="Pepperoni"><font size="5">pepperoni</font></label>
+<input type="checkbox" id="onion" name="onion" value="onion">
+<label for="onion"><font size="5">Onions</font></label>
+<input type="checkbox" id="sausage" name="sausage" value="sausage">
+<label for="sausage"><font size="5">Sausage</font></label>
+<input type="checkbox" id="mushrooms" name="mushrooms" value="mushrooms">
+<label for="mushrooms"><font size="5">Mushrooms</font></label>
+<input type="checkbox" id="peppers" name="peppers" value="peppers">
+<label for="peppers"><font size="5">Green Peppers</font></label>
+<input type="checkbox" id="olives" name="olives" value="olives">
+<label for="olives"><font size="5">Olives</font></label>
+<input type="checkbox" id="garlic" name="garlic" value="garlic">
+<label for="garlic"><font size="5">Garlic</font></label>
+</div>
+<br>
+<br>
+<span id="result">*</span><br><br>
+
+<input type="button" style="font-size:20px;" style = "center" color= "green" value="Calculate The price" id="amount" name="amount" onclick="calculatePrice();">
+<br>
+<br>
+
+
+<label for="amounts"><font size="5">This is the price for your order:</font></label>
+    
+<input type="text" id="amounts" name="amounts"  padding:10px placeholder="Net Amount" readonly>
+</div>
+</div>
+</body>
+</html>
